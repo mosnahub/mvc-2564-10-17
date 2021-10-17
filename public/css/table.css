@@ -1,0 +1,12 @@
+.report {
+	display: block;
+	margin: 2rem 2rem;
+}
+
+.report h1 {
+	text-align: center;
+}
+
+.report table {
+	margin: auto;
+}

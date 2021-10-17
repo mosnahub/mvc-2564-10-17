@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('./includes/head.ejs') %>
+
+	<body>
+		<%- include('./includes/nav.ejs') %>
+
+		<main>
+			<div>
+				<form action="/cpu-util" method="POST">
+					<div class="form-control">
+						<label for="time" class="mdc-text-field"
+							>Time (second)</label
+						>
+						<input
+							type="number"
+							name="time"
+							id="time"
+							step="0.01"
+							class="inline-text-field__input"
+							placeholder="Ex. 5.1"
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="cpu" class="mdc-text-field"
+							>CPU (core)</label
+						>
+						<input
+							type="number"
+							name="cpu"
+							id="cpu"
+							placeholder="Ex. 4"
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<button type="submit">Add</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="report">
+				<h1>CPU Utilization (last 15 records)</h1>
+				<table class="">
+					<tr>
+						<th>No.</th>
+						<th>Time (second)</th>
+						<th>CPU (core)</th>
+						<th>Update Time</th>
+					</tr>
+					<% var i = 0 %> <% cpuUtils.forEach(c => { %>
+					<tr>
+						<td><%= i+1 %></td>
+						<td><%= c._id %></td>
+						<td><%= c.cpu %></td>
+						<% var options = {year: 'numeric', month: '2-digit',
+						day: 'numeric', hour: '2-digit', minute: '2-digit',
+						second: '2-digit' } %>
+						<td>
+							<%= new
+							Date(c.updatedAt).toLocaleDateString("th-TH",
+							options) %>
+						</td>
+					</tr>
+					<% i++; %> <% }); %>
+				</table>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style></style>

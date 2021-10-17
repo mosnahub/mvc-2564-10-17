@@ -1,0 +1,16 @@
+form {
+	display: block;
+	align-items: center;
+}
+
+.form-control {
+	margin: 1rem auto;
+	width: 60%;
+}
+
+.form-control label,
+.form-control input {
+	display: block;
+	align-items: center;
+	padding: 0;
+}
